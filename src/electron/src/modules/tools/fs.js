@@ -244,8 +244,6 @@ export async function downloadFromIPFS(cid, options, events, writeStream) {
     logger.debug('Connecting to providers...')
 
     try {
-      await node.api.swarm.connect('/ip4/64.227.19.223/tcp/4001/p2p/QmSarArpxemsPESa6FNkmuu9iSE1QWqPX2R3Aw6f5jq4D5')
-      await node.api.swarm.connect('/ip4/64.227.27.182/tcp/4001/p2p/QmRjLSisUCHVpFa5ELVvX3qVPfdxajxWJEHs9kN3EcxAW6')
       await node.api.swarm.connect('/dns4/mariana.dreamnet.tech/tcp/4001/p2p/QmcWoy1FzBicbYuopNT2rT6EDQSBDfco1TxibEyYgWbiMq')
     } catch (err) {
       logger.warn(err)
@@ -262,7 +260,7 @@ export async function downloadFromIPFS(cid, options, events, writeStream) {
       return
     }
 
-    stats = await node.api.object.stat(cid, { timeout: 3000 })
+    stats = await node.api.object.stat(cid, { timeout: 6000 })
 
     logger.debug('Downloading...')
 
